@@ -38,6 +38,7 @@ interface ItemsData {
 interface ChallanData {
   challanNumber: string;
   date: string;
+  createdAt?: string;
   clientNicName: string;
   clientFullName: string;
   site: string;
@@ -97,6 +98,11 @@ const ChallanDetailsModal: React.FC<ChallanDetailsModalProps> = ({
                 <p className="text-gray-600">{t('date')}</p>
                 <p className="font-medium text-gray-900">
                   {format(new Date(challan.date), 'dd/MM/yyyy')}
+                  {challan.createdAt && (
+                    <span className="ml-1 text-[8px] text-gray-500">
+                      ({format(new Date(challan.createdAt), 'hh:mm a')})
+                    </span>
+                  )}
                 </p>
               </div>
             </div>
@@ -110,6 +116,11 @@ const ChallanDetailsModal: React.FC<ChallanDetailsModalProps> = ({
                 <p className="text-[10px] md:text-sm text-gray-600">{t('date')}</p>
                 <p className="text-xs md:text-base font-medium text-gray-900">
                   {format(new Date(challan.date), 'dd/MM/yyyy')}
+                  {challan.createdAt && (
+                    <span className="ml-2 text-xs text-gray-500 font-normal">
+                      {format(new Date(challan.createdAt), 'hh:mm a')}
+                    </span>
+                  )}
                 </p>
               </div>
             </div>

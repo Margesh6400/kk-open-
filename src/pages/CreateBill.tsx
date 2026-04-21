@@ -1230,11 +1230,10 @@ export default function CreateBill() {
                                         }`}
                                     ></div>
                                     <span>
-                                      {format(
-                                        parseISO(period.startDate),
-                                        "dd/MM/yyyy"
-                                      )}{" "}
-                                      થી {newDisplayEndDate}
+                                      {period.days === 0
+                                        ? newDisplayEndDate
+                                        : <>{format(parseISO(period.startDate), "dd/MM/yyyy")} થી {newDisplayEndDate}</>
+                                      }
                                     </span>
                                   </div>
                                 </div>

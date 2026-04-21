@@ -19,12 +19,15 @@ export default function ClientLedgerCard({ ledger }: ClientLedgerCardProps) {
   const t = translations[language];
   const navigate = useNavigate();
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
 
   const getInitial = (name: string) => {
     return name.charAt(0).toUpperCase();
   };
 
   const handleDownloadLedger = async (type: 'simple' | 'detailed') => {
+    if (isDownloading) return;
+    setIsDownloading(true);
     const loadingToast = toast.loading('Generating ledger image...');
     try {
       const elementId = `client-ledger-download-${ledger.clientId}-${type}`;
@@ -35,6 +38,8 @@ export default function ClientLedgerCard({ ledger }: ClientLedgerCardProps) {
       toast.dismiss(loadingToast);
       console.error('Error generating ledger:', error);
       toast.error('Failed to generate ledger');
+    } finally {
+      setIsDownloading(false);
     }
   };
 
@@ -71,9 +76,16 @@ export default function ClientLedgerCard({ ledger }: ClientLedgerCardProps) {
   // Long press logic
   const longPressTimer = useRef<NodeJS.Timeout | null>(null);
   const isLongPress = useRef(false);
+  const isTouch = useRef(false);
 
   const startPress = (e: React.MouseEvent | React.TouchEvent) => {
     e.stopPropagation(); // Stop propagation immediately
+    if (e.type === 'touchstart') {
+      isTouch.current = true;
+    } else if (e.type === 'mousedown' && isTouch.current) {
+      return; // Ignore mouse events if touch already triggered
+    }
+
     isLongPress.current = false;
     longPressTimer.current = setTimeout(() => {
       isLongPress.current = true;
@@ -84,6 +96,11 @@ export default function ClientLedgerCard({ ledger }: ClientLedgerCardProps) {
 
   const endPress = (e: React.MouseEvent | React.TouchEvent) => {
     e.stopPropagation();
+    
+    if (e.type === 'mouseup' && isTouch.current) {
+      return; // Ignore mouseup if touch initiated the action
+    }
+
     if (longPressTimer.current) {
       clearTimeout(longPressTimer.current);
       longPressTimer.current = null;
@@ -95,7 +112,13 @@ export default function ClientLedgerCard({ ledger }: ClientLedgerCardProps) {
     // If it was a long press, the action already happened in the timeout
   };
 
-  const cancelPress = () => {
+  const cancelPress = (e?: React.MouseEvent | React.TouchEvent) => {
+    if (e) {
+      e.stopPropagation();
+      if (e.type === 'mouseleave' && isTouch.current) {
+        return;
+      }
+    }
     if (longPressTimer.current) {
       clearTimeout(longPressTimer.current);
       longPressTimer.current = null;

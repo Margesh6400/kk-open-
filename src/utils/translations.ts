@@ -145,7 +145,7 @@ export const translations = {
     // Existing Translations
     appName: 'નીલકંઠ પ્લેટ ડેપો',
     greeting: 'નમસ્તે',
-    dashboard: 'ડેશબોર્ડ',
+    dashboard: 'રોજમેળ',
     addClient: 'ગ્રાહકો',
     // udharChallan: 'ઉધાર ચલણ',
     jamaChallan: 'જમા ચલણ',
@@ -183,7 +183,7 @@ export const translations = {
     selectClient: 'ગ્રાહક પસંદ કરો',
     quickAddClient: 'ઝડપથી ગ્રાહક ઉમેરો',
     actions: 'ક્રિયાઓ',
-    backToDashboard: 'ડેશબોર્ડ પર પાછા જાઓ',
+    backToDashboard: 'રોજમેળ પર પાછા જાઓ',
     overrideDetails: 'ફોન નંબર અને સાઇટ આ ચલણ માટે બદલો',
     basicDetails: 'ચલણ વિગતો',
     totalUdharChallans: 'કુલ ઉધાર ચલણ',
@@ -386,7 +386,7 @@ export const translations = {
     clientExists: "આ ગ્રાહક ID પહેલેથી જ અસ્તિત્વમાં છે",
     dailyRentPrice: 'દૈનિક ભાડા દર',
     dailyRentPriceHelp: 'બિલિંગ માટે દૈનિક ભાડા દર, ડિફોલ્ટ 1',
-    stockManagement : 'સ્ટોક મેનેજમેન્ટ',
+    stockManagement: 'ગોડાઉન સ્ટોક',
   },
   en: {
     // Landing Page

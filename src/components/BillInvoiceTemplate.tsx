@@ -274,8 +274,8 @@ const BillInvoiceTemplate: React.FC<BillInvoiceProps> = ({
                 return (
                   <tr key={`rent-${index}`}>
                     <td style={{ border: '1px solid #000', padding: '8px', textAlign: 'center', fontWeight: '600' }}>
-                      {isZeroBalance
-                        ? format(rowStartDate, 'dd/MM/yyyy')
+                      {charge.days === 0
+                        ? format(rowEndDate, 'dd/MM/yyyy')
                         : <>{format(rowStartDate, 'dd/MM/yyyy')} થી {format(rowEndDate, 'dd/MM/yyyy')}</>
                       }
                     </td>

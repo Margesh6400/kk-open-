@@ -410,8 +410,10 @@ export function calculateBillingPeriods(
           continue;  // Skip invalid periods
         }
 
-        // Create period if we have valid data with positive days
-        if (periodData && periodData.days > 0) {
+        // Create period if we have valid data
+        // Special case: Include zero-day periods if they represent a transaction 
+        // (especially a jama return on the bill date that reduces outstanding stock)
+        if (periodData && periodData.days >= 0) {
 
           // Final days calculation
           let finalDays = periodData.days;

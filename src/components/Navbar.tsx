@@ -52,10 +52,16 @@ const Navbar: React.FC = () => {
       colorClass: 'blue'
     },
     {
-      path: '/clients',
-      label: t('addClient'),
-      icon: UserPlus,
-      colorClass: 'blue'
+      path: '/client-ledger',
+      label: t('clientLedger'),
+      icon: BookMarked,
+      colorClass: 'slate'
+    },
+    {
+      path: '/stock',
+      label: t('stockManagement'),
+      icon: Package,
+      colorClass: 'orange'
     },
     {
       path: '/udhar-challan',
@@ -70,22 +76,16 @@ const Navbar: React.FC = () => {
       colorClass: 'green'
     },
     {
-      path: '/stock',
-      label: t('stockManagement'),
-      icon: Package,
-      colorClass: 'orange'
-    },
-    {
       path: '/challan-book',
       label: t('challanBook'),
       icon: BookOpen,
       colorClass: 'cyan'
     },
     {
-      path: '/client-ledger',
-      label: t('clientLedger'),
-      icon: BookMarked,
-      colorClass: 'slate'
+      path: '/clients',
+      label: t('addClient'),
+      icon: UserPlus,
+      colorClass: 'blue'
     },
     {
       path: '/billing',

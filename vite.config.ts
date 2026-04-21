@@ -12,7 +12,7 @@ export default defineConfig({
       manifest: {
         name: 'નીલકંઠ પ્લેટ ડેપો',
         short_name: 'પ્લેટ ડેપો',
-        description: 'નીલકંઠ પ્લેટ ડેપો બિલિંગ અને સ્ટોક મેનેજમેન્ટ એપ્લિકેશન',
+        description: 'નીલકંઠ પ્લેટ ડેપો બિલિંગ અને ગોડાઉન સ્ટોક એપ્લિકેશન',
         theme_color: '#2563eb',
         background_color: '#f3f4f6',
         display: 'standalone',

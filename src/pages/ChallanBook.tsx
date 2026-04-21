@@ -56,6 +56,7 @@ const emptyItems: ItemsData = {
 interface ChallanData {
   challanNumber: string;
   date: string;
+  createdAt: string;
   clientNicName: string;
   clientFullName: string;
   site: string;
@@ -149,6 +150,7 @@ const ChallanBook: React.FC = () => {
       .select(`
       udhar_challan_number,
       udhar_date,
+      created_at,
       driver_name,
       alternative_site,
       secondary_phone_number,
@@ -185,6 +187,7 @@ const ChallanBook: React.FC = () => {
       return {
         challanNumber: challan.udhar_challan_number,
         date: challan.udhar_date,
+        createdAt: challan.created_at,
         driverName: challan.driver_name,
         clientNicName: challan.client.client_nic_name,
         clientFullName: challan.client.client_name,
@@ -207,6 +210,7 @@ const ChallanBook: React.FC = () => {
       .select(`
       jama_challan_number,
       jama_date,
+      created_at,
       driver_name,
       alternative_site,
       secondary_phone_number,
@@ -243,6 +247,7 @@ const ChallanBook: React.FC = () => {
       return {
         challanNumber: challan.jama_challan_number,
         date: challan.jama_date,
+        createdAt: challan.created_at,
         driverName: challan.driver_name,
         clientNicName: challan.client.client_nic_name,
         clientFullName: challan.client.client_name,
@@ -674,7 +679,10 @@ const ChallanBook: React.FC = () => {
                           {challan.challanNumber}
                         </td>
                         <td className="px-6 py-4 text-sm text-center text-gray-900 whitespace-nowrap">
-                          {challan.date ? format(new Date(challan.date), 'dd/MM/yyyy') : 'N/A'}
+                          <div>
+                            <div>{challan.date ? format(new Date(challan.date), 'dd/MM/yyyy') : 'N/A'}</div>
+                            <div className="text-[10px] text-gray-500">{challan.createdAt ? format(new Date(challan.createdAt), 'hh:mm a') : ''}</div>
+                          </div>
                         </td>
                         <td className="px-6 py-4 text-sm text-center text-gray-900">
                           <div>
@@ -804,7 +812,10 @@ const ChallanBook: React.FC = () => {
                       <div className="flex flex-wrap gap-3">
                         <div className="flex items-center gap-1.5 sm:gap-2 text-gray-700">
                           <Calendar className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
-                          <span>{challan.date ? format(new Date(challan.date), 'dd/MM/yyyy') : 'N/A'}</span>
+                          <div className="flex flex-col sm:flex-row sm:gap-1.5 sm:items-baseline">
+                            <span>{challan.date ? format(new Date(challan.date), 'dd/MM/yyyy') : 'N/A'}</span>
+                            <span className="text-[9px] text-gray-400 sm:text-xs">{challan.createdAt ? format(new Date(challan.createdAt), 'hh:mm a') : ''}</span>
+                          </div>
                         </div>
                         <div className="flex items-center gap-1.5 sm:gap-2 text-gray-700 min-w-0 flex-1">
                           <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
