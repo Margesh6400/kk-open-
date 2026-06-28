@@ -130,9 +130,8 @@ const BillInvoiceTemplate: React.FC<BillInvoiceProps> = ({
             </div>
 
             <div style={{ textAlign: 'right', fontSize: '12.5px', lineHeight: 1.8 }}>
-              <div><b>સુરેશભાઈ:</b> ૯૩૨૮૭ ૨૮૨૨૮</div>
-              <div><b>હરેશભાઈ ઠુ.:</b> ૯૭૩૭૯ ૧૨૫૧૬</div>
-              <div><b>હરેશભાઈ પો.:</b> ૯૦૯૯૨ ૬૪૪૩૬</div>
+              <div><b>માર્ગેશ પોલારા</b> 88664 71567</div>
+              <div><b>માર્ગેશ પોલારા</b> 88664 71567</div>
             </div>
           </div>
 
@@ -162,7 +161,7 @@ const BillInvoiceTemplate: React.FC<BillInvoiceProps> = ({
             padding: '8px 16px',
           }}>
             <div style={{ fontWeight: '600', fontSize: '13px' }}>
-              ૧૦, અજમલધામ સોસાયટી, સીમાડા ગામ, સુરત.
+              ૧, રામનગર સોસાયટી, સીમાડા ગામ, સુરત.
             </div>
             <div style={{
               border: '2px solid #111',
